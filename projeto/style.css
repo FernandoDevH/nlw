@@ -1,0 +1,362 @@
+/*==========GERAL===================*/
+*{ /* controla universalmente todo o documento*/
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;/*faz com que as caixas sejam contadas apartir da borda e não do conteudo, sem ele a caixa é contada apartir do conteudo, contando com o conteudo mais o padding*/
+        
+    }
+    :root{
+        --primary-color: hsl(170, 100%,26%); /*cria uma variavel em css*/
+        --headline: hsl(210, 11%, 26%);
+        --paragraph: hsl(210, 9%, 31%);
+        
+        --fundobege: hsl(39, 100%, 97%);
+        --bordaverde: hsl(148, 23%, 89%);
+    
+        --bg-light: hsl(180, 14%, 97%);
+        
+        --navheight: 7.2rem;
+        font-size: 62.5%; /* transforma cada rem em 10px*/
+        0.1rem
+        1rem
+    }    
+    
+    html{
+        scroll-behavior: smooth; /*faz com que ao clicar em um menu a rolagem até a ele seja suave. behavior significa comportamento e smooth singnifica suave*/
+    }
+    
+    html,
+    body{
+        width:100%;
+        height:100%;
+    }
+        body{
+        font-family:'DM Sans';
+        font-size: 1.6rem;
+        
+        text-align:center;
+    
+        overflow: overlay;/*sobrepoe a barra de rolagem nos demais elementos da pagina*/
+    
+        background: var(--bg-light);
+    }
+    
+    .wrapper{
+        width: 37.5rem;
+        margin-inline: auto;
+        padding-inline: 2.4rem;
+    }
+    
+    ul{
+        list-style:none;
+    }
+    
+    section{
+        padding-block: 10rem;
+    }
+    /*==========#home=================*/
+    #home{
+        padding-top: calc(4.1rem + var(--navheight));
+    }
+    #home::before{   /* ::cria uma tag no html antes da tag setada(header no caso)*/
+        content:'';
+        width: 100%; /*unidade de medida na viewport que é a pagina completa e o w é de width*/
+        height: calc(100rem + var(--navheight));
+        background-color: var(--bordaverde);
+        display: block;
+        position: absolute; /*trava o bloco na tela desbloquenadno o top left right e bottom, deixando assim aonde quiser fixadamente na pagina */
+        top: 0;
+        left: 0;
+        z-index: -1; /*coloca o elemento atras dos outros */
+    }
+    #home h4{
+        font-size:1.4rem;
+        color: var(--primary-color);
+        margin-bottom:1.6rem;
+    }
+    #home h1{
+        font-size:3.4rem;
+        color: var(--headline);
+        line-heigth:130%;
+        margin-bottom:2.4rem;
+    }
+    #home p{
+        font-size:1.8rem;
+        line-height:150%;
+        font-weight:400;
+        color: var(--paragraph);
+        margin-bottom:3.2rem;
+    }
+    #home button{
+        background-color:var(--primary-color);
+    
+        border:none; /**/
+        border-radius:4rem;
+        
+        height:6.2rem; /*define a altura do botao*/
+        width: 26.4rem; /*define a largura*/
+        
+        color:white;
+        text-transform:uppercase; /*transforma todo o texto em caixa alta*/
+        font-size:1.4rem;
+        font-weight:700;
+    
+        display: flex; /*mexe com a propriedade dentro do elemento, no caso a frase que está dentro do botao, ele tambem destrava a caixa inteira fazendo com que ela vire como um display block perca as margins precisando assim de realianhar*/
+        
+        align-items: center; /*alinha os intens dentro da caixa*/
+        justify-content: center; /*justifica o conteudo dentro da caixa*/
+        gap: 1.6rem; /*faz o espaço entre os elementos dentro da caixa*/
+    
+        margin: 0 auto 6rem auto; /*top right left bottom */
+    }
+    #home img{
+        display: block;
+        margin-inline: auto;
+        width:26.4rem; /*usar  para acessibilida a imagem vai se adequando ao tamanho da pagina*/
+        object-position: 0 2rem;   /*serve para imagens apesar da imagem tem uma casca com a imagem dentro, essa propriedade serve para posicionar a imagem o primeiro posicionamento se for positivo(10) muda para a direita, se for negativo (-10)muda para a esquerda, e o segundo posicionamento se for positivo joga para baixo e negativo para cima
+        eixo x é direita e esquerda y é cima e baixo*/	
+    }
+    #home .stats {
+        width:32.7rem;
+        margin-inline: auto; /*ja altera a margem da esqueda e direita juntas, significa margem da linha*/
+        background: var(--fundobege);
+        display: flex;
+        flex-direction: column; /*quando se coloca o display flex, ele alinha os elementos lado a lado linha, colocando esse atributo ele alinha em coluna*/
+        justify-content: center; /*alinha os elementos no meio do eixo principal */
+        gap:6rem; /*faz o espaço entre os elementos dentro da caixa*/
+        padding-block:4rem;
+        border: 1px solid var(--bordaverde);
+        border-radius: 0.6rem;
+    }
+    #home .stat p{
+        margin: 0;
+        color: var(--primary-color);
+        line-height:150%;
+    }
+    #home .stat h3{
+        font-size: 4.8rem;
+        color: var(--headline);
+        line-height: 130%;
+        margin-bottom: 0.4rem;
+    
+    }
+    /*==========NAVIGATION=================*/
+    nav{
+        display:flex;
+    
+        height: var(--navheight);
+    
+        position:fixed; /*fica em uma tercera* camada e acaba perdendo o margin que estava setada, sendo que agora tem que ser setado como top e left right e bottom, conforme abaixo*/
+        top:0;
+        left:50%; /*fica 50% da largura do site*/
+        transform: translateX(-50%); /*tras para 50% do elemento*/
+    }
+    
+    nav .wrapper{
+        display:flex;
+        align-items: center;
+        /*alinha o texto ao meio do eixo main, alinha as duas propriedades para que fiquem alinadas. */
+        justify-content:space-between;/*space-between, joga um espaço entre as propriedades*/
+    
+    }
+    nav.scroll{
+        width:100vw;
+        background: var(--primary-color);
+    
+    }
+    
+    
+    nav.scroll svg:nth-child(1)  path{
+        fill:white;
+    }
+    nav.scroll button path{
+        stroke:white;
+    }
+    
+    nav button{
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+    
+    /*==========MENU EXPANSIVO=================*/
+    body.menu-expanded{
+        overflow:hidden;/*tira qualquer scroll da tela*/
+    }
+    body.menu-expanded > :not(nav){ /*aplica o css em todos menos no que está dentro do ()*/
+        display: none;
+    }
+    
+    .menu,
+    .close-menu,
+    body.menu-expanded .menu{
+        opacity:1;/*faz com que fique transparente*/
+        visibility: hidden; /*faz com que o display fique escondido*/
+    }
+    
+    body.menu-expanded .menu,
+    body.menu-expanded .close-menu{
+        opacity:1;
+        visibility:visible;
+    }
+    .menu{
+        transform: translateY(-100%);
+    }
+    body.menu-expanded .menu{
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: var(--primary-color);
+    
+        width:100vw;
+        height:100vh;
+    
+        padding-top: var(--navheight);
+        transition: transform 1000ms;
+        transform: translateY(0);
+    }
+    body.menu-expanded nav .open-menu{
+        display:none;
+    }
+    body.menu-expanded nav{
+        position: relative;
+    }
+    
+    .menu ul:nth-child(1){
+        display: flex;
+        flex-direction: column;
+        gap: 4.8rem;
+    
+        margin-top: 6rem;
+    
+        font-weight: 700;
+        font-size: 2.4rem;
+        line-height: 3.1rem;
+    
+        
+    }
+    
+    .menu ul li a{
+        color:white;
+        text-decoration: none;
+    }
+    
+    
+    .menu .button{
+        background: #ffffff;
+        border-radius: 4rem;
+        font-weight: 700;
+        font-size: 1.8rem;
+        line-height: 2.3rem;
+        text-transform: uppercase;
+        text-decoration: none;
+    
+        color: var(--primary-color);
+    
+        display: inline-block;
+        
+        padding: 1.6rem 3.2rem;
+        margin-top: 4.8rem;
+        margin-bottom: 8rem;
+        
+    }
+    .social-links{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        gap:3.2rem;
+        
+    }
+    body.menu-expanded .logo,
+    body.menu-expanded nav button{
+        position: relative;
+        z-index: 100;
+    }
+    body.menu-expanded .logo path{
+        fill: white;
+    }
+    body.menu-expanded button path{
+        stroke: white;
+    }
+    
+    /*==================SERVICES========================*/
+    
+    #services header h4{
+        font-size: 1.4rem;
+        line-height: 150%;
+        letter-spacing: 0.08rem;
+        color: var(--primary-color);
+        text-transform: uppercase;
+        margin-bottom: 1.6rem;
+    }
+    #services header h2{
+        font-size: 3rem;
+        line-height: 3.9rem;
+    
+        color: var(--headline);
+        margin-bottom: 6rem;
+    }
+    #services .cards{
+        display: flex;
+        flex-direction: column;
+        gap: 3.2rem; /*coloca espaço entre os elementos filhos, so libera com display flex*/
+    }
+    #services .card{
+        padding: 2.4rem;
+        text-align: left;
+    
+        border: 0.1rem solid var(--bordaverde);
+        border-radius: 0.6rem;
+    }
+    
+    #services .card h3{
+        margin-block: 1.6rem; /*espaçamento entre os elementos */
+    }
+    
+    /*
+    tipos de cores
+    nome em ingles
+    rgb
+    rgba
+    hsl: h de cor(170) s de saturação(100%) e l de luz (26%)
+    hsla: mesma coisa do hsl + opacidade onde 0 é totalmente transparente e 1 totalmente aparente
+    -block: altera o bottom e o top
+    -inline: altera left e right;
+    dimensões de "caixa":
+    borda, largura, altura, 
+    Margin: significa o espaçamento entre os blocos
+    padding: preenchimento interno
+    
+    border: demarcaçao do bloco;
+    heigth: altura do bloco;
+    width: largura do bloco;
+    display: é a apresentação dos 
+    
+    display:block: independete do que vier antes ou depois ele vai definir que a caixe tenha toda a largura da pagina jogando o que vier antes ou depois para uma outra linha. aceita altura e largura
+    display:inline: carrega apenas o tamanho do bloco. nao aceita altura e largura
+    
+    line-height: permite controlar o espaçamento entre as linhas e o texto, adistancia medida entre as linha base de duas linhas consecutivas
+    
+    
+    
+    
+    
+    observasoes gerais:
+    Utilizar as classes para varias tags e diferentes  
+    */
+    
+    /*
+    biblioteca é um conjunto de programacao que alguem já criou 
+    scroll reveal
+    como criar objeto no js
+    objetos são as chaves{}
+    dentro delas a gente pode setar as propriedades do objeto para eventuais consultas
+    var telefone = {
+    nome: 'Iphone',
+    color: 'red',
+    }
+    console.log(telefone.color)
+    retornara red
+    
+    toda vez que te .algumacoisa em js significa que antes é um objeto, e praticamente tudo em js é um objeto
+    */
